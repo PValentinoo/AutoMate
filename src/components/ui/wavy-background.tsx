@@ -57,13 +57,39 @@ export const WavyBackground = ({
     }
     canvas = canvasRef.current;
     ctx = canvas.getContext("2d");
-    w = ctx.canvas.width = window.innerWidth;
-    h = ctx.canvas.height = window.innerHeight;
+    
+    // Set high DPI for crisp rendering
+    const devicePixelRatio = window.devicePixelRatio || 1;
+    w = window.innerWidth;
+    h = window.innerHeight;
+    
+    canvas.width = w * devicePixelRatio;
+    canvas.height = h * devicePixelRatio;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    
+    // Enable better rendering
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
     ctx.filter = `blur(${blur}px)`;
     nt = 0;
+    
     window.onresize = function () {
-      w = ctx.canvas.width = window.innerWidth;
-      h = ctx.canvas.height = window.innerHeight;
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w * devicePixelRatio;
+      canvas.height = h * devicePixelRatio;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
       ctx.filter = `blur(${blur}px)`;
     };
     render();
@@ -79,26 +105,51 @@ export const WavyBackground = ({
   
   const drawWave = (n: number) => {
     nt += getSpeed();
-    for (i = 0; i < n; i++) {
-      ctx.beginPath();
-      ctx.lineWidth = waveWidth || 50;
-      ctx.strokeStyle = waveColors[i % waveColors.length];
-      for (x = 0; x < w; x += 5) {
-        var y = noise(x / 800, 0.3 * i, nt) * 100;
-        ctx.lineTo(x, y + h * 0.5);
+    
+    // Use requestIdleCallback for better performance
+    const drawWaveFrame = () => {
+      for (i = 0; i < n; i++) {
+        ctx.beginPath();
+        ctx.lineWidth = waveWidth || 50;
+        ctx.strokeStyle = waveColors[i % waveColors.length];
+        
+        // Optimize point density based on screen size
+        const pointDensity = w > 1920 ? 1 : w > 768 ? 2 : 3;
+        
+        for (x = 0; x < w; x += pointDensity) {
+          var y = noise(x / 800, 0.3 * i, nt) * 100;
+          if (x === 0) {
+            ctx.moveTo(x, y + h * 0.55);
+          } else {
+            ctx.lineTo(x, y + h * 0.55);
+          }
+        }
+        ctx.stroke();
       }
-      ctx.stroke();
-      ctx.closePath();
+    };
+
+    // Use requestIdleCallback if available, otherwise use immediate execution
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(drawWaveFrame);
+    } else {
+      drawWaveFrame();
     }
   };
 
   let animationId: number;
-  const render = () => {
-    ctx.fillStyle = backgroundFill || "transparent";
-    ctx.globalAlpha = 1;
-    ctx.fillRect(0, 0, w, h);
-    ctx.globalAlpha = waveOpacity !== undefined ? waveOpacity : 0.5;
-    drawWave(5);
+  let lastTime = 0;
+  const targetFPS = 30; // Reduce from 60fps to 30fps for better performance
+  const frameInterval = 1000 / targetFPS;
+
+  const render = (currentTime: number) => {
+    if (currentTime - lastTime >= frameInterval) {
+      ctx.fillStyle = backgroundFill || "transparent";
+      ctx.globalAlpha = 1;
+      ctx.fillRect(0, 0, w, h);
+      ctx.globalAlpha = waveOpacity !== undefined ? waveOpacity : 0.5;
+      drawWave(5);
+      lastTime = currentTime;
+    }
     animationId = requestAnimationFrame(render);
   };
 
@@ -133,6 +184,7 @@ export const WavyBackground = ({
         id="canvas"
         style={{
           ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
+          imageRendering: 'auto' as const,
         }}
       ></canvas>
       <div className={cn("relative z-10", className)} {...props}>

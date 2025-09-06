@@ -30,7 +30,7 @@ const MaintenancePage = () => {
             href="mailto:XXX" 
             className="text-blue-400 hover:text-blue-300 transition-colors underline"
           >
-            support@automate.dk
+            XXX
           </a>
         </div>
 

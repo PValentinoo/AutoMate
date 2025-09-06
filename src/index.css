@@ -144,12 +144,19 @@
 
 @layer components {
   .workflow-card {
-    @apply relative bg-card border border-border rounded-xl p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer;
+    @apply relative bg-card border border-border rounded-xl p-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-1 cursor-pointer;
     box-shadow: var(--shadow-md);
+    will-change: transform, box-shadow;
   }
 
   .workflow-card:hover {
     box-shadow: var(--shadow-workflow);
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  .workflow-card:active {
+    transform: translateY(-2px) scale(1.01);
+    transition-duration: 100ms;
   }
 
   .workflow-gradient {
@@ -164,14 +171,16 @@
 @layer utilities {
   /* Animation utilities to prevent flickering */
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     opacity: 0;
+    will-change: opacity;
   }
 
   .animate-slide-up {
-    animation: slideUp 0.6s ease-out forwards;
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     opacity: 0;
     transform: translateY(20px);
+    will-change: opacity, transform;
   }
 
   @keyframes fadeIn {
@@ -200,5 +209,28 @@
     image-rendering: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Performance optimizations */
+  .workflow-card,
+  .animate-fade-in,
+  .animate-slide-up {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Optimize text rendering */
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    text-rendering: optimizeSpeed;
+  }
+
+  /* Reduce repaints on hover */
+  .workflow-card:hover {
+    will-change: transform, box-shadow;
+  }
+
+  .workflow-card:not(:hover) {
+    will-change: auto;
   }
 }

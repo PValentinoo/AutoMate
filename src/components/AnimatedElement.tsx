@@ -12,7 +12,7 @@ export function AnimatedElement({
   children, 
   animation = "fade-in", 
   delay = 0, 
-  className 
+  className
 }: AnimatedElementProps) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -20,10 +20,10 @@ export function AnimatedElement({
     // Small delay to ensure DOM is ready and prevent hydration mismatch
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 50);
+    }, 50 + delay);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [delay]);
 
   const animationClass = animation === "fade-in" ? "animate-fade-in" : "animate-slide-up";
 
