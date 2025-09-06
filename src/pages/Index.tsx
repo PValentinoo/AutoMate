@@ -1,4 +1,4 @@
-import { Mail, TestTube, BookOpen, Lightbulb, Search, Loader2, Calculator, Zap } from "lucide-react";
+import { Mail, TestTube, BookOpen, Lightbulb, Search, Loader2, Calculator } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { WorkflowCard } from "@/components/WorkflowCard";
@@ -18,6 +18,7 @@ const Index = () => {
       description: "Organiser dine emails, eller få hjælp med at svare på emails i din personlige stemme",
       icon: Mail,
       color: "email" as const,
+      workflowType: "email",
       path: "/workflow/email"
     },
     {
@@ -25,6 +26,7 @@ const Index = () => {
       description: "Få hjælp med at udføre en JET test med denne agent",
       icon: TestTube,
       color: "test" as const,
+      workflowType: "test",
       path: "/workflow/test"
     },
     {
@@ -32,6 +34,7 @@ const Index = () => {
       description: "Få svar på revisionsfaglige spørgsmål med denne agent",
       icon: BookOpen,
       color: "manual" as const,
+      workflowType: "manual",
       path: "/workflow/manual"
     },
     {
@@ -39,6 +42,7 @@ const Index = () => {
       description: "Hent specifikke udtræk fra Economic med denne agent",
       icon: Calculator,
       color: "economics" as const,
+      workflowType: "economics",
       path: "/workflow/economics"
     },
     {
@@ -46,6 +50,7 @@ const Index = () => {
       description: "Har du en idé? Lad mig endelig høre!",
       icon: Lightbulb,
       color: "idea" as const,
+      workflowType: "idea",
       path: "/workflow/idea"
     },
   ];
@@ -87,7 +92,7 @@ const Index = () => {
           <div className="mb-8 max-w-6xl mx-auto">
             <div className="text-center max-w-3xl mx-auto">
               <div className="mb-6">
-                <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-white via-primary to-slate-900 bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+                <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-white via-primary to-slate-900 bg-clip-text text-transparent drop-shadow-lg tracking-tight font-open-sans">
                   Auto<span className="italic">Mate</span>
                 </h1>
                 <div className="w-100 h-1 bg-gradient-to-r from-primary/0 via-primary/55 to-primary/0 rounded-full mx-auto mb-4"></div>
@@ -98,7 +103,7 @@ const Index = () => {
                   Portal for automatiserede agenter og løsninger
                 </p>
                 <p className="text-lg text-muted-foreground/80 leading-relaxed max-w-2xl mx-auto">
-                  Her kan du tilgå automatiserede værktøjer, som kan assistere din revision eller hverdagens opgaver
+                  Her kan du tilgå et katalog af automatiserede værktøjer, med henblik på at assistere din revision eller hverdagens opgaver
                 </p>
               </div>
             </div>

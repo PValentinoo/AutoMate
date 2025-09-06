@@ -118,6 +118,7 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        'open-sans': ['Open Sans', 'system-ui', 'sans-serif'],
       },
     },
   },

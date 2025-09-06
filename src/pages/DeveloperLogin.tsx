@@ -6,10 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { useUser } from "@/contexts/UserContext";
 
 export default function DeveloperLogin() {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { login } = useUser();
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [loginMode, setLoginMode] = useState<"udvikler" | "medarbejder">("medarbejder");
@@ -25,6 +27,13 @@ export default function DeveloperLogin() {
         (loginMode === "medarbejder" && credentials.username === "medarbejder" && credentials.password === "medarbejder123");
 
       if (isValidCredentials) {
+        // Store user data in context
+        login({
+          userId: credentials.username,
+          userName: credentials.username,
+          userEmail: `${credentials.username}@automate.local`,
+        });
+
         toast({
           title: "Login lykkedes",
           description: loginMode === "udvikler" ? "Velkommen til udvikler dashboardet" : "Velkommen til AutoMate portal",

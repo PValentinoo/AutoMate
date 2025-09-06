@@ -18,6 +18,7 @@ const colorClasses = {
 };
 
 export function WorkflowCard({ title, description, icon: Icon, color, onClick }: WorkflowCardProps) {
+
   return (
     <Card 
       className="workflow-card group cursor-pointer h-96"

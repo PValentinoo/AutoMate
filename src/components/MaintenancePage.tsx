@@ -17,7 +17,7 @@ const MaintenancePage = () => {
         </h1>
         
         <p className="text-xl text-gray-300 leading-relaxed">
-          Vi arbejder på at gøre Auto<span className="italic">Mate</span> bedre.
+          Vi arbejder på at gøre <span className="font-open-sans-light">Auto<span className="italic">Mate</span></span> bedre.
         </p>
         <p className="text-xl text-gray-300 mb-12 leading-relaxed">
           Kom tilbage snart!
@@ -36,7 +36,7 @@ const MaintenancePage = () => {
 
         {/* Footer */}
         <div className="mt-16 text-gray-500 text-sm">
-          <p>© 2025 Auto<span className="italic">Mate</span>. Alle rettigheder forbeholdes.</p>
+        <p>© 2025 <span className="font-open-sans">Auto<span className="italic">Mate</span></span>. Alle rettigheder forbeholdes.</p>
         </div>
       </div>
     </div>
