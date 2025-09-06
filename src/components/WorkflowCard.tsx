@@ -5,7 +5,7 @@ interface WorkflowCardProps {
   title: string;
   description: string;
   icon: LucideIcon;
-  color: "email" | "test" | "manual" | "idea";
+  color: "email" | "test" | "manual" | "idea" | "economics";
   onClick: () => void;
 }
 
@@ -14,24 +14,25 @@ const colorClasses = {
   test: "bg-workflow-test/10 text-workflow-test border-workflow-test/20", 
   manual: "bg-workflow-manual/10 text-workflow-manual border-workflow-manual/20",
   idea: "bg-workflow-idea/10 text-workflow-idea border-workflow-idea/20",
+  economics: "bg-workflow-economics/10 text-workflow-economics border-workflow-economics/20",
 };
 
 export function WorkflowCard({ title, description, icon: Icon, color, onClick }: WorkflowCardProps) {
   return (
     <Card 
-      className="workflow-card group cursor-pointer"
+      className="workflow-card group cursor-pointer h-96"
       onClick={onClick}
     >
-      <div className="flex flex-col items-center text-center space-y-6">
+      <div className="flex flex-col items-center text-center h-full p-6">
         <div className={`w-20 h-20 rounded-2xl flex items-center justify-center border-2 transition-all duration-300 group-hover:scale-110 ${colorClasses[color]}`}>
           <Icon className="w-10 h-10" />
         </div>
         
-        <div className="space-y-3">
+        <div className="flex flex-col justify-center flex-1 space-y-3">
           <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
             {title}
           </h3>
-          <p className="text-muted-foreground leading-relaxed max-w-xs">
+          <p className="text-muted-foreground leading-relaxed text-base">
             {description}
           </p>
         </div>

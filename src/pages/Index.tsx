@@ -1,4 +1,4 @@
-import { Mail, TestTube, BookOpen, Lightbulb, Search, Loader2 } from "lucide-react";
+import { Mail, TestTube, BookOpen, Lightbulb, Search, Loader2, Calculator } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { WorkflowCard } from "@/components/WorkflowCard";
@@ -15,24 +15,31 @@ const Index = () => {
   const workflows = [
     {
       title: "Email Assistent",
-      description: "Strømlin emailbehandling med intelligent automatisering og smart kategorisering",
+      description: "Organiser dine emails, eller få hjælp med at svare på emails i din personlige stemme",
       icon: Mail,
       color: "email" as const,
       path: "/workflow/email"
     },
     {
       title: "JET Test Assistent", 
-      description: "Automatiserede testworkflows for kvalitetssikring og performancevalidering",
+      description: "Få hjælp med at udføre en JET test med denne agent",
       icon: TestTube,
       color: "test" as const,
       path: "/workflow/test"
     },
     {
       title: "Revisor-håndbog Assistent",
-      description: "Manuel gennemgangsprocesser og håndbogsstyring med guidede workflows",
+      description: "Få svar på revisionsfaglige spørgsmål med denne agent",
       icon: BookOpen,
       color: "manual" as const,
       path: "/workflow/manual"
+    },
+    {
+      title: "Economic Assistent",
+      description: "Hent specifikke udtræk fra Economic med denne agent",
+      icon: Calculator,
+      color: "economics" as const,
+      path: "/workflow/economics"
     },
     {
       title: "Idé kassen",
@@ -40,7 +47,7 @@ const Index = () => {
       icon: Lightbulb,
       color: "idea" as const,
       path: "/workflow/idea"
-    }
+    },
   ];
 
   // Debounced search query
@@ -72,7 +79,7 @@ const Index = () => {
   }, []);
 
   const content = (
-    <>
+    <div className="relative min-h-screen">
       <DeveloperButton onClick={() => navigate('/developer/login')} />
       
       <div className="container mx-auto px-6 py-16">
@@ -82,10 +89,10 @@ const Index = () => {
               Auto<span className="italic">Mate</span>
             </h1>
             <p className="text-2xl italic text-muted-foreground/80 mb-6">
-              Portal for automatiske løsninger
+              Portal for automatiserede agenter og løsninger
             </p>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Her kan du tilgå automatiserede agenter, som kan hjælpe dig med hverdagens opgaver
+              Her kan du tilgå automatiserede værktøjer, som kan assistere din revision eller hverdagens opgaver
             </p>
           </div>
         </AnimatedElement>
@@ -128,12 +135,14 @@ const Index = () => {
             ))
           ) : (
             <div className="col-span-full text-center py-12">
-              <p className="text-lg text-muted-foreground">
-                Ingen workflows fundet for "{searchQuery}"
-              </p>
-              <p className="text-sm text-muted-foreground/70 mt-2">
-                Prøv at søge efter et andet ord eller sætning
-              </p>
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg p-8 max-w-md mx-auto border border-border/50">
+                <p className="text-lg text-foreground font-medium">
+                  Ingen workflows fundet for "{searchQuery}"
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Prøv at søge efter et andet ord eller sætning
+                </p>
+              </div>
             </div>
           )}
         </div>
@@ -141,12 +150,12 @@ const Index = () => {
         <AnimatedElement animation="fade-in" delay={600}>
           <div className="text-center mt-16">
             <p className="text-sm text-muted-foreground">
-              Har du brug for hjælp? Kontakt XXX
+            © 2025 Udviklet af Philip Valentin Christiansen
             </p>
           </div>
         </AnimatedElement>
       </div>
-    </>
+    </div>
   );
 
   return (

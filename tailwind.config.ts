@@ -33,6 +33,8 @@ export default {
           email: "hsl(var(--workflow-email))",
           test: "hsl(var(--workflow-test))", 
           manual: "hsl(var(--workflow-manual))",
+          idea: "hsl(var(--workflow-idea))",
+          economics: "hsl(var(--workflow-economics))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

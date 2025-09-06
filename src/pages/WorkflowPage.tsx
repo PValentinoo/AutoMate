@@ -19,9 +19,14 @@ const workflowDetails = {
     description: "Manuel gennemgangs- og håndbogsstyringsworkflows",
     color: "bg-workflow-manual/10 text-workflow-manual border-workflow-manual/20"
   },
+  economics: {
+    title: "Economic Assistent",
+    description: "Hent udtræk fra Economic med denne agent",
+    color: "bg-workflow-economics/10 text-workflow-economics border-workflow-economics/20"
+  },
   idea: {
     title: "Idé kassen",
-    description: "Har du en idé? Lad os endelig høre!",
+    description: "Har du en idé til en nyt workflow eller feedback på et eksisterende? Lad mig endelig høre!",
     color: "bg-workflow-idea/10 text-workflow-idea border-workflow-idea/20"
   }
 };
