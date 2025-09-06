@@ -92,7 +92,7 @@ export const WavyBackground = ({
       ctx.lineJoin = 'round';
       ctx.filter = `blur(${blur}px)`;
     };
-    render();
+    render(0);
   };
 
   const waveColors = colors ?? [
@@ -119,9 +119,9 @@ export const WavyBackground = ({
         for (x = 0; x < w; x += pointDensity) {
           var y = noise(x / 800, 0.3 * i, nt) * 100;
           if (x === 0) {
-            ctx.moveTo(x, y + h * 0.55);
+            ctx.moveTo(x, y + h * 0.6);
           } else {
-            ctx.lineTo(x, y + h * 0.55);
+            ctx.lineTo(x, y + h * 0.6);
           }
         }
         ctx.stroke();

@@ -1,4 +1,4 @@
-import { Mail, TestTube, BookOpen, Lightbulb, Search, Loader2, Calculator } from "lucide-react";
+import { Mail, TestTube, BookOpen, Lightbulb, Search, Loader2, Calculator, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { WorkflowCard } from "@/components/WorkflowCard";
@@ -84,16 +84,24 @@ const Index = () => {
       
       <div className="container mx-auto px-6 py-16">
         <AnimatedElement animation="fade-in">
-          <div className="text-center mb-8">
-            <h1 className="text-6xl font-bold mb-3 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              Auto<span className="italic">Mate</span>
-            </h1>
-            <p className="text-2xl italic text-muted-foreground/80 mb-6">
-              Portal for automatiserede agenter og løsninger
-            </p>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Her kan du tilgå automatiserede værktøjer, som kan assistere din revision eller hverdagens opgaver
-            </p>
+          <div className="mb-8 max-w-6xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto">
+              <div className="mb-6">
+                <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-white via-primary to-slate-900 bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+                  Auto<span className="italic">Mate</span>
+                </h1>
+                <div className="w-80 h-1 bg-gradient-to-r from-primary/20 via-primary/50 to-primary/10 rounded-full mx-auto mb-4"></div>
+              </div>
+              
+              <div className="space-y-3">
+                <p className="text-2xl font-medium text-foreground/90 tracking-wide">
+                  Portal for automatiserede agenter og løsninger
+                </p>
+                <p className="text-lg text-muted-foreground/80 leading-relaxed max-w-2xl mx-auto">
+                  Her kan du tilgå automatiserede værktøjer, som kan assistere din revision eller hverdagens opgaver
+                </p>
+              </div>
+            </div>
           </div>
         </AnimatedElement>
 
