@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Workflow Portal Design System */
+
+@layer base {
+  :root {
+    /* Core palette - Professional blues and grays */
+    --background: 0 0% 100%;
+    --foreground: 210 11% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+
+    /* Professional blue primary */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 55%;
+
+    /* Workflow specific colors */
+    --workflow-email: 198 93% 60%;
+    --workflow-test: 142 76% 36%;
+    --workflow-manual: 258 90% 66%;
+    --workflow-idea: 45 93% 58%;
+
+    /* Clean secondary palette */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 210 11% 15%;
+    --secondary-hover: 210 40% 92%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 210 11% 46%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 210 11% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Beautiful gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-workflow: linear-gradient(135deg, hsl(var(--background)), hsl(210 40% 98%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%), hsl(198 93% 60%));
+
+    /* Elegant shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(210 40% 8% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(210 40% 8% / 0.1), 0 2px 4px -1px hsl(210 40% 8% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(210 40% 8% / 0.1), 0 4px 6px -2px hsl(210 40% 8% / 0.05);
+    --shadow-workflow: 0 20px 25px -5px hsl(210 40% 8% / 0.1), 0 10px 10px -5px hsl(210 40% 8% / 0.04);
+
+    /* Smooth transitions */
+    --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-transform: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 222 47% 4%;
+    --foreground: 213 31% 91%;
+
+    --card: 222 47% 6%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 222 47% 6%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 217 91% 65%;
+    --primary-foreground: 222 47% 4%;
+    --primary-hover: 217 91% 60%;
+
+    --workflow-email: 199 89% 65%;
+    --workflow-test: 142 69% 45%;
+    --workflow-manual: 258 84% 70%;
+    --workflow-idea: 45 93% 65%;
+
+    --secondary: 215 25% 12%;
+    --secondary-foreground: 213 31% 91%;
+    --secondary-hover: 215 25% 16%;
+
+    --muted: 215 25% 12%;
+    --muted-foreground: 217 11% 65%;
+
+    --accent: 215 25% 12%;
+    --accent-foreground: 213 31% 91%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 213 31% 91%;
+
+    --border: 215 25% 16%;
+    --input: 215 25% 16%;
+    --ring: 217 91% 65%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 65%), hsl(217 91% 75%));
+    --gradient-workflow: linear-gradient(135deg, hsl(222 47% 4%), hsl(215 25% 8%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 65%), hsl(199 89% 65%));
+
+    --shadow-workflow: 0 20px 25px -5px hsl(222 47% 2% / 0.4), 0 10px 10px -5px hsl(222 47% 2% / 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent flickering during hydration */
+  .animate-fade-in,
+  .animate-slide-up {
+    will-change: opacity, transform;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+@layer components {
+  .workflow-card {
+    @apply relative bg-card border border-border rounded-xl p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer;
+    box-shadow: var(--shadow-md);
+  }
+
+  .workflow-card:hover {
+    box-shadow: var(--shadow-workflow);
+  }
+
+  .workflow-gradient {
+    background: var(--gradient-workflow);
+  }
+
+  .hero-section {
+    background: var(--gradient-hero);
+  }
+}
+
+@layer utilities {
+  /* Animation utilities to prevent flickering */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Smooth canvas rendering */
+  canvas {
+    image-rendering: auto;
+    image-rendering: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
