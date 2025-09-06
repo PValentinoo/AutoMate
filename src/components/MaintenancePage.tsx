@@ -27,7 +27,7 @@ const MaintenancePage = () => {
         <div className="text-gray-400">
           <p className="mb-2">Har du brug for at komme i kontakt?</p>
           <a 
-            href="mailto:support@automate.dk" 
+            href="mailto:XXX" 
             className="text-blue-400 hover:text-blue-300 transition-colors underline"
           >
             support@automate.dk
@@ -36,7 +36,7 @@ const MaintenancePage = () => {
 
         {/* Footer */}
         <div className="mt-16 text-gray-500 text-sm">
-          <p>© 2024 Auto<span className="italic">Mate</span>. Alle rettigheder forbeholdes.</p>
+          <p>© 2025 Auto<span className="italic">Mate</span>. Alle rettigheder forbeholdes.</p>
         </div>
       </div>
     </div>
