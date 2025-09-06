@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useCallback } from "react";
 import { WorkflowCard } from "@/components/WorkflowCard";
 import { DeveloperButton } from "@/components/DeveloperButton";
 import { AnimatedElement } from "@/components/AnimatedElement";
-import { WavyBackground } from "@/components/ui/wavy-background";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { Input } from "@/components/ui/input";
 
 const Index = () => {
@@ -167,15 +167,21 @@ const Index = () => {
   );
 
   return (
-    <WavyBackground 
-      backgroundFill="transparent"
-      waveOpacity={1}
-      speed="slow"
-      blur={8}
-      className="min-h-screen"
-    >
+    <div className="relative min-h-screen">
+      <AnimatedGridPattern
+        numSquares={40}
+        maxOpacity={0.15}
+        duration={3}
+        angle={15}
+        perspective={1200}
+        rotateX={20}
+        rotateY={10}
+        width={50}
+        height={50}
+        className="opacity-50"
+      />
       {content}
-    </WavyBackground>
+    </div>
   );
 };
 

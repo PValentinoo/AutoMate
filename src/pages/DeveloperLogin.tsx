@@ -12,6 +12,7 @@ export default function DeveloperLogin() {
   const { toast } = useToast();
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const [loginMode, setLoginMode] = useState<"udvikler" | "medarbejder">("medarbejder");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,16 +20,21 @@ export default function DeveloperLogin() {
 
     // Simulate authentication
     setTimeout(() => {
-      if (credentials.username === "developer" && credentials.password === "workflow123") {
+      const isValidCredentials = 
+        (loginMode === "udvikler" && credentials.username === "developer" && credentials.password === "workflow123") ||
+        (loginMode === "medarbejder" && credentials.username === "medarbejder" && credentials.password === "medarbejder123");
+
+      if (isValidCredentials) {
         toast({
           title: "Login lykkedes",
-          description: "Velkommen til udvikler dashboardet",
+          description: loginMode === "udvikler" ? "Velkommen til udvikler dashboardet" : "Velkommen til AutoMate portal",
         });
-        navigate('/developer/dashboard');
+        navigate(loginMode === "udvikler" ? '/developer/dashboard' : '/');
       } else {
+        const demoCredentials = loginMode === "udvikler" ? "developer / workflow123" : "medarbejder / medarbejder123";
         toast({
           title: "Login fejlede",
-          description: "Ugyldige legitimationsoplysninger. Prøv: developer / workflow123",
+          description: `Ugyldige legitimationsoplysninger. Prøv: ${demoCredentials}`,
           variant: "destructive",
         });
       }
@@ -54,9 +60,9 @@ export default function DeveloperLogin() {
             <div className="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mx-auto mb-4">
               <Lock className="w-8 h-8" />
             </div>
-            <h1 className="text-2xl font-bold">Udvikler Adgang</h1>
+            <h1 className="text-2xl font-bold">Login</h1>
             <p className="text-muted-foreground mt-2">
-              Log ind for at administrere workflows og assistenter
+              Log ind som {loginMode === "udvikler" ? "udvikler" : "medarbejder"}
             </p>
           </div>
 
@@ -102,9 +108,19 @@ export default function DeveloperLogin() {
             </Button>
           </form>
 
+          <div className="mt-6 text-center">
+            <button
+              type="button"
+              onClick={() => setLoginMode(loginMode === "udvikler" ? "medarbejder" : "udvikler")}
+              className="text-sm text-muted-foreground hover:text-primary transition-colors underline"
+            >
+              {loginMode === "medarbejder" ? "Log ind som udvikler" : "Log ind som medarbejder"}
+            </button>
+          </div>
+
           <div className="mt-6 p-4 bg-muted/50 rounded-lg">
             <p className="text-xs text-muted-foreground text-center">
-              Demo legitimationsoplysninger: developer / workflow123
+              Demo legitimationsoplysninger: {loginMode === "udvikler" ? "developer / workflow123" : "medarbejder / medarbejder123"}
             </p>
           </div>
         </Card>
