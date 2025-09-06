@@ -90,7 +90,7 @@ const Index = () => {
                 <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-white via-primary to-slate-900 bg-clip-text text-transparent drop-shadow-lg tracking-tight">
                   Auto<span className="italic">Mate</span>
                 </h1>
-                <div className="w-80 h-1 bg-gradient-to-r from-primary/20 via-primary/50 to-primary/10 rounded-full mx-auto mb-4"></div>
+                <div className="w-100 h-1 bg-gradient-to-r from-primary/0 via-primary/55 to-primary/0 rounded-full mx-auto mb-4"></div>
               </div>
               
               <div className="space-y-3">
