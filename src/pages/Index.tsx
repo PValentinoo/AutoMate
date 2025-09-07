@@ -47,7 +47,7 @@ const Index = () => {
     },
     {
       title: "Idéer og feedback",
-      description: "Har du en ny idé, eller feedback på et eksisterende værktøj? Lad mig endelig høre!",
+      description: "Har du en god idé, eller feedback på et eksisterende værktøj? Lad mig endelig høre!",
       icon: Lightbulb,
       color: "idea" as const,
       workflowType: "idea",
