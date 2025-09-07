@@ -175,7 +175,7 @@ const Index = () => {
     <div className="relative min-h-screen">
       <AnimatedGridPattern
         numSquares={40}
-        maxOpacity={0.15}
+        maxOpacity={0.25}
         duration={3}
         angle={15}
         perspective={1200}
@@ -183,7 +183,7 @@ const Index = () => {
         rotateY={10}
         width={50}
         height={50}
-        className="opacity-50"
+        className="opacity-70"
       />
       {content}
     </div>
