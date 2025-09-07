@@ -526,7 +526,7 @@ export default function WorkflowPage() {
                         <div className="flex items-start gap-2">
                           <Bot className="w-4 h-4 mt-0.5 text-workflow-idea flex-shrink-0" />
                           <div className="flex-1">
-                            <p className="text-sm">Tak for din idé! Vi vil gennemgå den og vende tilbage.</p>
+                            <p className="text-sm">Tak for din besked!</p>
                             <p className="text-xs opacity-70 mt-1">
                               {new Date().toLocaleTimeString('da-DK', {
                                 hour: '2-digit',
