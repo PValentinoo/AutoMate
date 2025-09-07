@@ -46,8 +46,8 @@ const Index = () => {
       path: "/workflow/economics"
     },
     {
-      title: "Idé kassen",
-      description: "Har du en idé? Lad mig endelig høre!",
+      title: "Idéer og feedback",
+      description: "Har du en ny idé, eller feedback på et eksisterende værktøj? Lad mig endelig høre!",
       icon: Lightbulb,
       color: "idea" as const,
       workflowType: "idea",

@@ -45,8 +45,8 @@ export default function DeveloperDashboard() {
       color: "economics"
     },
     { 
-      name: "Idé kassen", 
-      description: "Har du en idé? Lad mig endelig høre!",
+      name: "Idéer og feedback", 
+      description: "Har du en idé eller feedback? Lad mig endelig høre!",
       status: "Aktiv", 
       users: 15, 
       lastUsed: "1 time siden",
