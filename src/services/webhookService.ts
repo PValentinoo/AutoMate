@@ -106,7 +106,13 @@ class WebhookService {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const responseData = await response.json();
+      let responseData;
+      try {
+        responseData = await response.json();
+      } catch (jsonError) {
+        // Webhook response is not JSON, treating as success
+        responseData = null;
+      }
       
       return {
         success: true,

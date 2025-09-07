@@ -162,14 +162,11 @@ export default function WorkflowPage() {
       });
 
       if (result.success) {
-        // Add delay to show loading animation longer
-        setTimeout(() => {
-          setIdeaSubmitted(true);
-          setIdeaText('');
-          setIsSubmittingIdea(false);
-          // Reset success state after 8 seconds
-          setTimeout(() => setIdeaSubmitted(false), 5000);
-        }, 2000);
+        setIdeaSubmitted(true);
+        setIdeaText('');
+        setIsSubmittingIdea(false);
+        // Reset success state after 5 seconds
+        setTimeout(() => setIdeaSubmitted(false), 5000);
       } else {
         console.error('Failed to submit idea:', result.error);
         setIsSubmittingIdea(false);
@@ -195,15 +192,12 @@ export default function WorkflowPage() {
       });
 
       if (result.success) {
-        // Add delay to show loading animation longer
-        setTimeout(() => {
-          setEconomicSubmitted(true);
-          setCustomerName('');
-          setExtractRequest('');
-          setIsSubmittingEconomic(false);
-          // Reset success state after 8 seconds
-          setTimeout(() => setEconomicSubmitted(false), 5000);
-        }, 2000);
+        setEconomicSubmitted(true);
+        setCustomerName('');
+        setExtractRequest('');
+        setIsSubmittingEconomic(false);
+        // Reset success state after 5 seconds
+        setTimeout(() => setEconomicSubmitted(false), 5000);
       } else {
         console.error('Failed to submit Economic request:', result.error);
         setIsSubmittingEconomic(false);
