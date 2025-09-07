@@ -11,31 +11,31 @@ const workflowDetails = {
     title: "Email Assistent", 
     description: "Automatiseret emailbehandling og administrationsworkflows",
     color: "bg-workflow-email/10 text-workflow-email border-workflow-email/20",
-    workflowType: "email"
+    workflowType: "Email"
   },
   test: {
     title: "JET Test Assistent",
     description: "Automatiserede testworkflows og kvalitetssikringsprocesser", 
     color: "bg-workflow-test/10 text-workflow-test border-workflow-test/20",
-    workflowType: "test"
+    workflowType: "JET_test"
   },
   manual: {
     title: "Revisor-håndbog Assistent",
     description: "Chat-agent med udgangspunkt i Quick-guide og regnskabshåndbog",
     color: "bg-workflow-manual/10 text-workflow-manual border-workflow-manual/20",
-    workflowType: "manual"
+    workflowType: "Revisor_chat"
   },
   economics: {
     title: "Economic Assistent",
     description: "Hent udtræk fra Economic med denne agent",
     color: "bg-workflow-economics/10 text-workflow-economics border-workflow-economics/20",
-    workflowType: "economics"
+    workflowType: "Economics"
   },
   idea: {
-    title: "Idé kassen",
+    title: "Idé eller feedback",
     description: "Har du en idé til en nyt workflow eller feedback på et eksisterende? Lad mig endelig høre!",
     color: "bg-workflow-idea/10 text-workflow-idea border-workflow-idea/20",
-    workflowType: "idea"
+    workflowType: "Idé_kasse"
   }
 };
 
