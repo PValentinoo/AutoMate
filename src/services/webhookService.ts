@@ -35,7 +35,7 @@ class WebhookService {
   private async collectUserData(): Promise<UserData> {
     // Collect basic user data
     const userData: UserData = {
-      timestamp: new Date().toISOString(),
+      loginTimestamp: new Date().toISOString(),
       userAgent: navigator.userAgent,
     };
 

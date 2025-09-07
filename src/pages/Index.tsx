@@ -100,7 +100,7 @@ const Index = () => {
               
               <div className="space-y-3">
                 <p className="text-2xl font-medium text-foreground/90 tracking-wide">
-                  Portal for automatiserede agenter og løsninger
+                  Portal for automatiserede agenter og værktøjer
                 </p>
                 <p className="text-lg text-muted-foreground/80 leading-relaxed max-w-2xl mx-auto">
                   Her kan du tilgå et katalog af automatiserede værktøjer, med henblik på at assistere din revision eller hverdagens opgaver

@@ -167,8 +167,8 @@ export default function WorkflowPage() {
           setIdeaSubmitted(true);
           setIdeaText('');
           setIsSubmittingIdea(false);
-          // Reset success state after 3 seconds
-          setTimeout(() => setIdeaSubmitted(false), 3000);
+          // Reset success state after 8 seconds
+          setTimeout(() => setIdeaSubmitted(false), 5000);
         }, 2000);
       } else {
         console.error('Failed to submit idea:', result.error);
@@ -201,8 +201,8 @@ export default function WorkflowPage() {
           setCustomerName('');
           setExtractRequest('');
           setIsSubmittingEconomic(false);
-          // Reset success state after 3 seconds
-          setTimeout(() => setEconomicSubmitted(false), 3000);
+          // Reset success state after 8 seconds
+          setTimeout(() => setEconomicSubmitted(false), 5000);
         }, 2000);
       } else {
         console.error('Failed to submit Economic request:', result.error);
@@ -526,7 +526,7 @@ export default function WorkflowPage() {
                         <div className="flex items-start gap-2">
                           <Bot className="w-4 h-4 mt-0.5 text-workflow-idea flex-shrink-0" />
                           <div className="flex-1">
-                            <p className="text-sm">Tak for din besked!</p>
+                            <p className="text-sm">Tak for din besked! Vi vil undersøge din henvendelse 🙌</p>
                             <p className="text-xs opacity-70 mt-1">
                               {new Date().toLocaleTimeString('da-DK', {
                                 hour: '2-digit',
